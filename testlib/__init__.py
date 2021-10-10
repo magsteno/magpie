@@ -231,19 +231,18 @@ def deschiffresetdeslettres(stroke: Tuple[str, ...], latinOut: bool = False) -> 
     (hash, initial, vowel, r, final, t, s) = parts.groups()
 
     if final.replace('𐑮', '') == '𐑐𐑤':
+        letter = None
         if initial:
             if initial in strokesDict['initials'] and len(strokesDict['initials'][initial]) == 1:
                 letter = strokesDict['initials'][initial]
                 if not hash:
                     letter = fingerspelling[letter]
-                elif vowel: return None
 
             elif initial in fingerspelling['exceptions']:
-                if hash: return None
-                letter = fingerspelling['exceptions'][initial]
-            else: return None
+                if not hash:
+                    letter = fingerspelling['exceptions'][initial]
 
-            if vowel:
+            if vowel and letter:
                 letter = letter.upper()
 
         elif vowel:
@@ -256,9 +255,6 @@ def deschiffresetdeslettres(stroke: Tuple[str, ...], latinOut: bool = False) -> 
                 letter = fingerspelling[vowel.replace('*', '') or '*'] + bool(r) * 'r'
                 if '*' in vowel and vowel.replace('*', ''):
                     letter = letter.upper()
-
-            else: return None
-        else: return None
 
         return f'{{&{letter}}}'
 
