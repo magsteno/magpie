@@ -1,6 +1,6 @@
 #test shavian dictionary
 
-from testlib import briefsDict_search, steno_to_shav, shav_to_latin, reloaddicts
+from testlib import deschiffresetdeslettres, briefsDict_search, steno_to_shav, shav_to_latin, reloaddicts
 
 LONGEST_KEY = 6
 
@@ -31,10 +31,17 @@ def lookup(chords):
         return r'{PLOVER:TOGGLE_DICT:-testlib\testlatin.py,+testlib\testshav.py}'
 
     output = briefsDict_search(outline, latinOut = True)
+
+    outline = tuple(outline.split('/'))
+    
     if output is None:
-        (output, variant) = steno_to_shav(outline.split('/'))
+        output = deschiffresetdeslettres(outline, latinOut = True)
+    if output is None:
+        (output, variant) = steno_to_shav(outline)
         if output is None:
             raise KeyError('Empty stroke')
         output = shav_to_latin(output, variant)
+
+        if output.startswith('\''): output = output.replace('\'', '{~|\'^}', 1)
 
     return output

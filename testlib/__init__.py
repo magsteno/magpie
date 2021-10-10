@@ -2,7 +2,7 @@
 
 # used to get a list of active dictionaries to pull prefixed terms froms
 from plover import config
-from typing import Tuple
+from typing import Optional, Union, Tuple, List
 currentconfig = config.Config(r'.\plover.cfg')
 
 # each chord in the strokes dictionary is assigned a specific consonant cluster or vowel. sorted loosely based on standard shavian order
@@ -67,7 +67,8 @@ strokesDict = {
 }
 
 # === dictionary functions ===
-def comparejsons():
+
+def comparejsons() -> None:
     import plover
 
     # reload and compare current plover config to 'briefsDict'
@@ -76,7 +77,7 @@ def comparejsons():
     if enabledjsons != currentjsons:
         reloadjsons(enabledjsons)
 
-def reloadjsons(current = [path for (path, enabled) in currentconfig.__getitem__('dictionaries') if path.endswith('json') and enabled]):
+def reloadjsons(current: List[str] = [path for (path, enabled) in currentconfig.__getitem__('dictionaries') if path.endswith('json') and enabled]) -> None:
     import json, plover
     global currentjsons, briefsDict
 
@@ -92,9 +93,9 @@ def reloadjsons(current = [path for (path, enabled) in currentconfig.__getitem__
             # extract from the file only keys beginning with a @, add them to briefsDict
             briefsPacked = list(filter(lambda k: k[0][:1] == '@', briefsPacked.items()))
             briefsDict = {**briefsDict, **{k[1:]: v.split(',,,') for k, v in briefsPacked}}
-            del filedata, briefsPacked
+    del filedata, briefsPacked
 
-def reloaddicts():
+def reloaddicts() -> None:
     import plover, os
     global latin, standardise
 
@@ -109,7 +110,7 @@ def reloaddicts():
         list = tsvcfg.readlines()
         for tsvdir in list:
             if not os.path.isabs(tsvdir):
-                tsvdir = '.\\shavian\\' + tsvdir
+                tsvdir = '.\\shavian\\' + tsvdir.replace('\n', '')
             with open(tsvdir, encoding='UTF8') as file:
                 for line in file.readlines():
                     line = line.replace('\n','')
@@ -127,17 +128,25 @@ def reloaddicts():
                             latin[shav] = {orth: freq}
                         else:
                             latin[shav][orth] = freq
-                for entry in latin:
-                    latin[entry] = [shav for shav, freq in sorted(latin[entry].items(), key=lambda freq: freq[1], reverse=True)]
+        for entry in latin:
+            latin[entry] = [shav for shav, freq in sorted(latin[entry].items(), key=lambda freq: freq[1], reverse=True)]
     reloadjsons()
 
 # initial load of dictionaries
 reloaddicts()
 
 
+
 # === utilities ===
+### returns a decimal value based on booleans values of items in tuple; big-endian
+def binarybools(bools: tuple) -> int:
+    binary = ''
+    for digit in bools:
+        binary += str(int(bool(digit)))
+    return int(binary, 2)
+
 ### returns $first, changing a final 𐑩 to an 𐑫 if $last starts with a vowel
-def schwu(first,last):
+def schwu(first: str, last: str) -> str:
     import re
     if first[-1:] == '𐑩' and re.match('[𐑦-𐑭,𐑰-𐑾]', last[:1]) is not None:
         return first[:-1] + '𐑫'
@@ -145,7 +154,7 @@ def schwu(first,last):
 
 ### searches for $stroke in strokesDict, returning None if not found
 # latinOut = True will return latin spelling if available
-def briefsDict_search(stroke, latinOut = False, standard = False):
+def briefsDict_search(stroke: str, latinOut: bool = False, standard: bool = False) -> Optional[str]:
     comparejsons()
     if stroke in briefsDict:
         output = briefsDict[stroke][-latinOut]
@@ -157,7 +166,7 @@ def briefsDict_search(stroke, latinOut = False, standard = False):
 # '{^}cat{^} -> ['{^', '', '}', 'cat', '{^}']
 # '{^cat}' -> ['{^', 'cat', '}', '', None]
 # 'cat{^}' -> [None, None, None, 'cat', '{^}']
-def parse_joiners(shav, groups = ('0', '1', '2', '3', '4')):
+def parse_joiners(shav: Union[str, Tuple[str, ...]], groups: Tuple[str, ...] = ('0', '1', '2', '3', '4')) -> List[Union[str, None]]:
     import re
 
     # shav, if tuple or list, will be converted into a string, with None values ignored
@@ -176,9 +185,97 @@ def parse_joiners(shav, groups = ('0', '1', '2', '3', '4')):
                 sections[-1] = (sections[-1] or '') + part
     return sections
 
+fingerspelling = {'numbers': [
+        [    '0',    '0s',   '0th',  '0ths',      'zero',    'zeroes',    'zeroth',   'zeroths',
+             '0',    '0𐑟',    '0𐑔',   '0𐑔𐑕',       '𐑟𐑽𐑴',      '𐑟𐑽𐑴𐑟',      '𐑟𐑽𐑴𐑔',     '𐑟𐑽𐑴𐑔𐑕'],
+        [    '1',    '1s',   '1st',  '1sts',       'one',      'ones',     'first',    'firsts',
+             '1',    '1𐑟',   '1𐑕𐑑',  '1𐑕𐑑𐑕',       '𐑢𐑳𐑯',      '𐑢𐑳𐑯𐑟',      '𐑓𐑻𐑕𐑑',     '𐑓𐑻𐑕𐑑𐑕'],
+        [    '2',    '2s',   '2nd',  '2nds',       'two',      'twos',    'second',   'seconds',
+             '2',    '2𐑟',    '2𐑛',   '2𐑛𐑟',        '𐑑𐑵',       '𐑑𐑵𐑟',    '𐑕𐑧𐑒𐑩𐑯𐑛',   '𐑕𐑧𐑒𐑩𐑯𐑛𐑟'],
+        [    '3',    '3s',   '3rd',  '3rds',     'three',    'threes',     'third',    'thirds',
+             '3',    '3𐑟',    '3𐑛',   '3𐑛𐑟',       '𐑔𐑮𐑰',      '𐑔𐑮𐑰𐑟',       '𐑔𐑻𐑛',      '𐑔𐑻𐑛𐑟'],
+        [    '4',    '4s',   '4th',  '4ths',      'four',     'fours',    'fourth',   'fourths',
+             '4',    '4𐑟',    '4𐑔',   '4𐑔𐑕',        '𐑓𐑹',       '𐑓𐑹𐑟',       '𐑓𐑹𐑔',      '𐑓𐑹𐑔𐑕'],
+        [    '5',    '5s',   '5th',  '5ths',      'five',     'fives',     'fifth',    'fifths',
+             '5',    '5𐑟',    '5𐑔',   '5𐑔𐑕',       '𐑓𐑲𐑝',      '𐑓𐑲𐑝𐑟',      '𐑓𐑦𐑓𐑔',     '𐑓𐑦𐑓𐑔𐑕'],
+        [    '6',    '6s',   '6th',  '6ths',       'six',     'sixes',     'sixth',    'sixths',
+             '6',    '6𐑟',    '6𐑔',   '6𐑔𐑕',      '𐑕𐑦𐑒𐑕',    '𐑕𐑦𐑒𐑕𐑩𐑟',     '𐑕𐑦𐑒𐑕𐑔',    '𐑕𐑦𐑒𐑕𐑔𐑕'],
+        [    '7',    '7s',   '7th',  '7ths',     'seven',    'sevens',   'seventh',  'sevenths',
+             '7',    '7𐑟',    '7𐑔',   '7𐑔𐑕',     '𐑕𐑧𐑝𐑩𐑯',    '𐑕𐑧𐑝𐑩𐑯𐑟',    '𐑕𐑧𐑝𐑩𐑯𐑔',   '𐑕𐑧𐑝𐑩𐑯𐑔𐑕'],
+        [    '8',    '8s',   '8th',  '8ths',     'eight',    'eights',    'eighth',   'eighths',
+             '8',    '8𐑟',    '8𐑔',   '8𐑔𐑕',        '𐑱𐑑',       '𐑱𐑑𐑕',       '𐑱𐑑𐑔',      '𐑱𐑑𐑔𐑕'],
+        [    '9',    '9s',   '9th',  '9ths',      'nine',     'nines',     'ninth',    'ninths',
+             '9',    '9𐑟',    '9𐑔',   '9𐑔𐑕',       '𐑯𐑲𐑯',      '𐑯𐑲𐑯𐑟',      '𐑯𐑲𐑯𐑔',     '𐑯𐑲𐑯𐑔𐑕'],
+        [   '10',   '10s',  '10th', '10ths',       'ten',      'tens',     'tenth',    'tenths',
+            '10',   '10𐑟',   '10𐑔',  '10𐑔𐑕',       '𐑑𐑧𐑯',      '𐑑𐑧𐑯𐑟',      '𐑑𐑧𐑯𐑔',     '𐑑𐑧𐑯𐑔𐑕'],
+        [   '11',   '11s',  '11th', '11ths',    'eleven',   'elevens',  'eleventh', 'elevenths',
+            '11',   '11𐑟',   '11𐑔',  '11𐑔𐑕',    '𐑦𐑤𐑧𐑝𐑩𐑯',   '𐑦𐑤𐑧𐑝𐑩𐑯𐑟',   '𐑦𐑤𐑧𐑝𐑩𐑯𐑔',  '𐑦𐑤𐑧𐑝𐑩𐑯𐑔𐑕'],
+        [   '12',   '12s',  '12th', '12ths',    'twelve',   'twelves',   'twelfth',  'twelfths'
+            '12',   '12𐑟',   '12𐑔',  '12𐑔𐑕',     '𐑑𐑢𐑧𐑤𐑝',    '𐑑𐑢𐑧𐑤𐑝𐑟',    '𐑑𐑢𐑧𐑤𐑓𐑔',   '𐑑𐑢𐑧𐑤𐑓𐑔𐑕']],
+    '𐑐':  'p', '𐑚':  'b', '𐑑':  't', '𐑛':  'd', '𐑒':  'k',  '𐑜': 'g',
+    '𐑓':  'f', '𐑝':  'v', '𐑔': 'th', '𐑞': 'dh', '𐑕':  's', '𐑟':  'z',
+    '𐑖': 'sh', '𐑠': 'zh', '𐑗': 'ch', '𐑡':  'j', '𐑘':  'y', '𐑢':  'w',
+    '𐑙': 'ng', '𐑣':  'h', '𐑤':  'l', '𐑮':  'r', '𐑥':  'm', '𐑯':  'n',
+    '𐑧𐑳': 'i', '𐑧':  'e', '𐑨':  'a', '*':  'ə', '𐑳':  'u', '𐑪':  'o',
+    'exceptions': {None: None, '𐑒𐑣': 'c', '𐑒𐑢': 'q', '𐑑𐑒𐑣𐑮': 'x'}
+}
+### returns a string with a number or ordinal, or with letters for fingerspelling
+# ('#-𐑜') -> '3' # ('#𐑑𐑐𐑣-𐑐𐑚𐑤𐑜𐑑') -> 'twelfth'
+# ('𐑑𐑐-𐑐𐑤') -> 'f' # ('𐑕𐑑𐑒𐑐𐑣*𐑐𐑤') -> 'NG' # ('#𐑒𐑐-𐑐𐑤') -> '𐑖'
+def deschiffresetdeslettres(stroke: Tuple[str, ...], latinOut: bool = False) -> Optional[str]:
+    import re
+    # https://regex101.com/r/e8WjLD/1
+    parts = re.match(r'^(#)?([𐑕𐑑𐑒𐑐𐑢𐑣𐑮]+(?=-|\*[^𐑮]))?(?:-|([𐑨𐑪*𐑧𐑳]+(?=(𐑮))?))([𐑓𐑮𐑐𐑚𐑤𐑜]+)(𐑑)?(𐑕)?$', stroke[0])
+    if len(stroke) > 1 or not parts:
+        return None
+    (hash, initial, vowel, r, final, t, s) = parts.groups()
+
+    if final.replace('𐑮', '') == '𐑐𐑤':
+        if initial:
+            if initial in strokesDict['initials'] and len(strokesDict['initials'][initial]) == 1:
+                letter = strokesDict['initials'][initial]
+                if not hash:
+                    letter = fingerspelling[letter]
+                elif vowel: return None
+
+            elif initial in fingerspelling['exceptions']:
+                if hash: return None
+                letter = fingerspelling['exceptions'][initial]
+            else: return None
+
+            if vowel:
+                letter = letter.upper()
+
+        elif vowel:
+            rhoticity = (1 - bool(r)) * 'non' + 'rhotic'
+            if hash:
+                if vowel in strokesDict[rhoticity] and len(strokesDict[rhoticity][vowel]) == 1:
+                    letter = strokesDict[rhoticity][vowel]
+
+            elif vowel.replace('*', '') or '*' in fingerspelling:
+                letter = fingerspelling[vowel.replace('*', '') or '*'] + bool(r) * 'r'
+                if '*' in vowel and vowel.replace('*', ''):
+                    letter = letter.upper()
+
+            else: return None
+        else: return None
+
+        return f'{{&{letter}}}'
+
+    elif hash and (initial == '𐑑𐑐𐑣' or not initial) and not vowel:
+        decodenums = ['𐑮𐑚𐑜', '𐑮', '𐑚', '𐑜', '𐑓𐑮', '𐑐𐑚', '𐑤𐑜', '𐑓', '𐑐', '𐑤', '𐑓𐑐𐑤', '𐑓𐑮𐑐𐑚', '𐑐𐑚𐑤𐑜']
+        if final in decodenums:
+            number = decodenums.index(final)
+            number = fingerspelling['numbers'][number][binarybools((1 - latinOut, initial, t, s))]
+            return f'{{&{number}}}'
+
+    return None
+
+
 
 # === conversion functions for steno dictionaries ===
-### '𐑕𐑑𐑒𐑣𐑮𐑨𐑪𐑧𐑚𐑟' to '𐑜𐑤𐑱𐑟'
+
+### '𐑕𐑑𐑒𐑣𐑮𐑨𐑪𐑧𐑚𐑕' to '𐑜𐑤𐑱𐑟'
 def stroke_to_shav(stroke: str) -> str:
     import re
 
@@ -245,11 +342,11 @@ def stroke_to_shav(stroke: str) -> str:
     if joinsNext:
         shav += '{^}'
 
-    return(shav)
+    return shav
 
 
 ### ('#𐑑𐑐*', '𐑑𐑐𐑣𐑧𐑑', '𐑒𐑢𐑮-𐑚𐑜𐑕') into '𐑓𐑩𐑯𐑧𐑑𐑦𐑒𐑕'
-def steno_to_shav(steno: Tuple[str], standard = False) -> str:
+def steno_to_shav(steno: Tuple[str, ...], standard: bool = False) -> Tuple[Optional[str], int]:
     output = None
 
     # special exception for the 𐑳 -> 𐑩 brief
@@ -292,7 +389,7 @@ def steno_to_shav(steno: Tuple[str], standard = False) -> str:
         else:
             raise KeyError('Word boundary within outline')
 
-    if standard:
+    if standard and output is not None:
         output = parse_joiners(output, ('012', '3', '4'))
         if output[1] in standardise:
             output = standardise[output[1]][bool(variant)]
