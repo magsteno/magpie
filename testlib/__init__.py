@@ -282,7 +282,10 @@ def deschiffresetdeslettres(stroke: Tuple[str], latinOut: bool = False) -> Optio
         if final in fingerspelling['righthand']:
             number = fingerspelling['righthand'].index(final)
             number = fingerspelling['numbers'][number][binarybools((not latinOut, initial, t, s))]
-            return f'{{&{number}}}'
+            #marks only single digits with {&} glue
+            if not binarybools((initial, t, s)):
+                number = f'{{&{number}}}'
+            return number
 
     return None
 
