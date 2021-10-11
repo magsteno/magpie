@@ -140,10 +140,10 @@ reloaddicts()
 # === utilities ===
 ### returns a decimal value based on booleans values of items in tuple; big-endian
 def binarybools(bools: tuple) -> int:
-    binary = ''
-    for digit in bools:
-        binary += str(int(bool(digit)))
-    return int(binary, 2)
+    val = 0
+    for i, num in enumerate(reversed(bools)):
+        val += 2**i * bool(num)
+    return val
 
 ### returns $first, changing a final 𐑩 to an 𐑫 if $last starts with a vowel
 def schwu(first: str, last: str) -> str:
@@ -185,7 +185,9 @@ def parse_joiners(shav: Union[str, Tuple[str, ...]], groups: Tuple[str, ...] = (
                 sections[-1] = (sections[-1] or '') + part
     return sections
 
-fingerspelling = {'numbers': [
+fingerspelling = {
+    'righthand': ['𐑮𐑚𐑜', '𐑮', '𐑚', '𐑜', '𐑓𐑮', '𐑐𐑚', '𐑤𐑜', '𐑓', '𐑐', '𐑤', '𐑓𐑐𐑤', '𐑓𐑮𐑐𐑚', '𐑐𐑚𐑤𐑜']
+    'numbers': [
         [    '0',    '0s',   '0th',  '0ths',      'zero',    'zeroes',    'zeroth',   'zeroths',
              '0',    '0𐑟',    '0𐑔',   '0𐑔𐑕',       '𐑟𐑽𐑴',      '𐑟𐑽𐑴𐑟',      '𐑟𐑽𐑴𐑔',     '𐑟𐑽𐑴𐑔𐑕'],
         [    '1',    '1s',   '1st',  '1sts',       'one',      'ones',     'first',    'firsts',
@@ -212,57 +214,74 @@ fingerspelling = {'numbers': [
             '11',   '11𐑟',   '11𐑔',  '11𐑔𐑕',    '𐑦𐑤𐑧𐑝𐑩𐑯',   '𐑦𐑤𐑧𐑝𐑩𐑯𐑟',   '𐑦𐑤𐑧𐑝𐑩𐑯𐑔',  '𐑦𐑤𐑧𐑝𐑩𐑯𐑔𐑕'],
         [   '12',   '12s',  '12th', '12ths',    'twelve',   'twelves',   'twelfth',  'twelfths'
             '12',   '12𐑟',   '12𐑔',  '12𐑔𐑕',     '𐑑𐑢𐑧𐑤𐑝',    '𐑑𐑢𐑧𐑤𐑝𐑟',    '𐑑𐑢𐑧𐑤𐑓𐑔',   '𐑑𐑢𐑧𐑤𐑓𐑔𐑕']],
-    '𐑐':  'p', '𐑚':  'b', '𐑑':  't', '𐑛':  'd', '𐑒':  'k',  '𐑜': 'g',
-    '𐑓':  'f', '𐑝':  'v', '𐑔': 'th', '𐑞': 'dh', '𐑕':  's', '𐑟':  'z',
-    '𐑖': 'sh', '𐑠': 'zh', '𐑗': 'ch', '𐑡':  'j', '𐑘':  'y', '𐑢':  'w',
-    '𐑙': 'ng', '𐑣':  'h', '𐑤':  'l', '𐑮':  'r', '𐑥':  'm', '𐑯':  'n',
-    '𐑧𐑳': 'i', '𐑧':  'e', '𐑨':  'a', '*':  'ə', '𐑳':  'u', '𐑪':  'o',
-    'exceptions': {None: None, '𐑒𐑣': 'c', '𐑒𐑢': 'q', '𐑑𐑒𐑣𐑮': 'x'}
+    '𐑐':  'P', '𐑚':  'B', '𐑑':  'T', '𐑛':  'D', '𐑒':  'K',  '𐑜': 'G',
+    '𐑓':  'F', '𐑝':  'V', '𐑔': 'TH', '𐑞': 'DH', '𐑕':  'S', '𐑟':  'Z',
+    '𐑖': 'SH', '𐑠': 'ZH', '𐑗': 'CH', '𐑡':  'J', '𐑘':  'Y', '𐑢':  'W',
+    '𐑙': 'NG', '𐑣':  'H', '𐑤':  'L', '𐑮':  'R', '𐑥':  'M', '𐑯':  'N',
+    '𐑧𐑳': 'I', '𐑧':  'E', '𐑨':  'A', '':   'ə', '𐑳':  'U', '𐑪':  'O',
+    'exceptions': {None: None, '𐑒𐑣': 'C', '𐑒𐑢': 'Q', '𐑑𐑒𐑣𐑮': 'X'}
 }
 ### returns a string with a number or ordinal, or with letters for fingerspelling
 # ('#-𐑜') -> '3' # ('#𐑑𐑐𐑣-𐑐𐑚𐑤𐑜𐑑') -> 'twelfth'
 # ('𐑑𐑐-𐑐𐑤') -> 'f' # ('𐑕𐑑𐑒𐑐𐑣*𐑐𐑤') -> 'NG' # ('#𐑒𐑐-𐑐𐑤') -> '𐑖'
-def deschiffresetdeslettres(stroke: Tuple[str, ...], latinOut: bool = False) -> Optional[str]:
+def deschiffresetdeslettres(stroke: Tuple[str], latinOut: bool = False) -> Optional[str]:
     import re
     # https://regex101.com/r/e8WjLD/1
     parts = re.match(r'^(#)?([𐑕𐑑𐑒𐑐𐑢𐑣𐑮]+(?=-|\*[^𐑮]))?(?:-|([𐑨𐑪*𐑧𐑳]+(?=(𐑮))?))([𐑓𐑮𐑐𐑚𐑤𐑜]+)(𐑑)?(𐑕)?$', stroke[0])
+    # if no match or too many strokes
     if len(stroke) > 1 or not parts:
         return None
+    # $hash takes #, $initial takes initial consonants
+    # $vowel takes vowels and *, $r takes 'R' only if vowel is present
+    # $final takes final consonants, $t takes 'T', $s takes 'S'
     (hash, initial, vowel, r, final, t, s) = parts.groups()
 
+    # -𐑐𐑤 marks fingerspelling, using # to mark shavian and * to mark capitalisation
     if final.replace('𐑮', '') == '𐑐𐑤':
         letter = None
+        # if initial is present, we are fingerspelling a consonant
         if initial:
             if initial in strokesDict['initials'] and len(strokesDict['initials'][initial]) == 1:
+                # the consonant is valid for shavian fingerspelling (hash marks shavian)
                 letter = strokesDict['initials'][initial]
                 if not hash:
                     letter = fingerspelling[letter]
 
             elif initial in fingerspelling['exceptions']:
+                # the consonant is an exception with no shavian equivalent
                 if not hash:
                     letter = fingerspelling['exceptions'][initial]
 
-            if vowel and letter:
-                letter = letter.upper()
+            if letter and not vowel:
+                # vowel represents the * key
+                letter = f'{{>}}{letter.lower()}'
 
+        # if vowel is present, we are fingerspelling a vowel
         elif vowel:
-            rhoticity = (1 - bool(r)) * 'non' + 'rhotic'
+            # if r is present, rhotic (otherwise nonrhotic)
+            rhoticity = not bool(r) * 'non' + 'rhotic'
             if hash:
                 if vowel in strokesDict[rhoticity] and len(strokesDict[rhoticity][vowel]) == 1:
+                    # the vowel is valid for shavian fingerspelling
                     letter = strokesDict[rhoticity][vowel]
 
-            elif vowel.replace('*', '') or '*' in fingerspelling:
-                letter = fingerspelling[vowel.replace('*', '') or '*'] + bool(r) * 'r'
-                if '*' in vowel and vowel.replace('*', ''):
-                    letter = letter.upper()
+            elif vowel.replace('*', '') in fingerspelling:
+                # when not shavian, vowel must be present in fingerspelling dictionary
+                # if rhotic, an r will be placed after the vowel
+                letter = fingerspelling[vowel.replace('*', '')] + bool(r) * 'r'
+                if not '*' in vowel or letter == 'ə':
+                    # vowel should be lowercase
+                    letter = f'{{>}}{letter.lower()}'
 
-        return f'{{&{letter}}}'
+        # attempt to wrap letter in {&} glue, else if no letter, return None
+        return re.sub('({>})?(.+)', r'\1{&\2}', letter or '') or None
 
+    # #- marks a number, optionally with N- (𐑑𐑐𐑣-) marking that it should be spelt out
+    # in adition to the numbers, -𐑑 and -𐑕 can be used for ordinals and plurals
     elif hash and (initial == '𐑑𐑐𐑣' or not initial) and not vowel:
-        decodenums = ['𐑮𐑚𐑜', '𐑮', '𐑚', '𐑜', '𐑓𐑮', '𐑐𐑚', '𐑤𐑜', '𐑓', '𐑐', '𐑤', '𐑓𐑐𐑤', '𐑓𐑮𐑐𐑚', '𐑐𐑚𐑤𐑜']
-        if final in decodenums:
-            number = decodenums.index(final)
-            number = fingerspelling['numbers'][number][binarybools((1 - latinOut, initial, t, s))]
+        if final in fingerspelling['righthand']:
+            number = fingerspelling['righthand'].index(final)
+            number = fingerspelling['numbers'][number][binarybools((not latinOut, initial, t, s))]
             return f'{{&{number}}}'
 
     return None
