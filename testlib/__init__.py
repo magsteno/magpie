@@ -259,7 +259,7 @@ def deschiffresetdeslettres(stroke: Tuple[str], latinOut: bool = False) -> Optio
         # if vowel is present, we are fingerspelling a vowel
         elif vowel:
             # if r is present, rhotic (otherwise nonrhotic)
-            rhoticity = not bool(r) * 'non' + 'rhotic'
+            rhoticity = (not bool(r)) * 'non' + 'rhotic'
             if hash:
                 if vowel in strokesDict[rhoticity] and len(strokesDict[rhoticity][vowel]) == 1:
                     # the vowel is valid for shavian fingerspelling
@@ -269,8 +269,8 @@ def deschiffresetdeslettres(stroke: Tuple[str], latinOut: bool = False) -> Optio
                 # when not shavian, vowel must be present in fingerspelling dictionary
                 # if rhotic, an r will be placed after the vowel
                 letter = fingerspelling[vowel.replace('*', '')] + bool(r) * 'r'
-                if not '*' in vowel or letter == 'ə':
-                    # vowel should be lowercase
+                if not re.fullmatch(r'(.\*|\*.)', vowel):
+                    # vowel should be lowercase if no *
                     letter = f'{{>}}{letter.lower()}'
 
         # attempt to wrap letter in {&} glue, else if no letter, return None
