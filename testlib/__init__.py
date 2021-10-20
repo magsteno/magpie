@@ -14,7 +14,7 @@ strokesDict = {
         '𐑒': '𐑒', '𐑒𐑢': '𐑒𐑢', '𐑒𐑣𐑮': '𐑒𐑤', '𐑒𐑮': '𐑒𐑮', '𐑕𐑑𐑒': '𐑜', '𐑕𐑑𐑒𐑢': '𐑜𐑢', '𐑕𐑑𐑒𐑣𐑮': '𐑜𐑤', '𐑕𐑑𐑒𐑮': '𐑜𐑮',
         '𐑑𐑐': '𐑓', '𐑑𐑐𐑣𐑮': '𐑓𐑤', '𐑑𐑐𐑮': '𐑓𐑮', '𐑑𐑐𐑢': '𐑝', '𐑑𐑐𐑢𐑮': '𐑝𐑮',
         '𐑑𐑣': '𐑔', '𐑑𐑢𐑣': '𐑔𐑢', '𐑑𐑣𐑮': '𐑔𐑮', '𐑑𐑒𐑣': '𐑞',
-        '𐑕': '𐑕', '𐑕𐑐': '𐑕𐑐', '𐑕𐑐𐑣𐑮': '𐑕𐑐𐑤', '𐑕𐑐𐑮': '𐑕𐑐𐑮', '𐑕𐑑': '𐑕𐑑', '𐑕𐑑𐑮': '𐑕𐑑𐑮', '𐑕𐑒': '𐑕𐑒', '𐑕𐑒𐑣𐑮': '𐑕𐑒𐑤', '𐑕𐑒𐑮': '𐑕𐑒𐑮', '𐑕𐑒𐑢': '𐑕𐑒𐑢', '𐑕𐑑𐑐': '𐑕𐑓', '𐑕𐑢': '𐑕𐑢', '𐑕𐑣𐑮': '𐑕𐑤', '𐑕𐑐𐑣': '𐑕𐑥', '𐑕𐑑𐑐𐑣': '𐑕𐑯', '𐑕𐑮': '𐑟',
+        '𐑕': '𐑕', '𐑕𐑐': '𐑕𐑐', '𐑕𐑐𐑣𐑮': '𐑕𐑐𐑤', '𐑕𐑐𐑮': '𐑕𐑐𐑮', '𐑕𐑑': '𐑕𐑑', '𐑕𐑑𐑮': '𐑕𐑑𐑮', '𐑕𐑒': '𐑕𐑒', '𐑕𐑒𐑣𐑮': '𐑕𐑒𐑤', '𐑕𐑒𐑮': '𐑕𐑒𐑮', '𐑕𐑒𐑢': '𐑕𐑒𐑢', '𐑕𐑑𐑐': '𐑕𐑓', '𐑕𐑒𐑢𐑮': '𐑕𐑘', '𐑕𐑢': '𐑕𐑢', '𐑕𐑣𐑮': '𐑕𐑤', '𐑕𐑐𐑣': '𐑕𐑥', '𐑕𐑑𐑐𐑣': '𐑕𐑯', '𐑕𐑮': '𐑟',
         '𐑒𐑐': '𐑖', '𐑒𐑐𐑣𐑮': '𐑖𐑤', '𐑒𐑐𐑮': '𐑖𐑮', '𐑒𐑐𐑢': '𐑠',
         '𐑑𐑒𐑐': '𐑗', '𐑑𐑒𐑐𐑢': '𐑡',
         '𐑒𐑢𐑮': '𐑘', '𐑢': '𐑢',
@@ -36,9 +36,9 @@ strokesDict = {
         '𐑕': '𐑕', '𐑓𐑐': '𐑕𐑐', '𐑓𐑐𐑕': '𐑕𐑐𐑕', '𐑓𐑐𐑕𐑛': '𐑕𐑐𐑕𐑑', '𐑓𐑐𐑑': '𐑕𐑐𐑑', '𐑓𐑐𐑑𐑕': '𐑕𐑐𐑑𐑕', '𐑕𐑛': '𐑕𐑑', '𐑚𐑑': '𐑕𐑑', '𐑕𐑛𐑟': '𐑕𐑑𐑕', '𐑚𐑑𐑕': '𐑕𐑑𐑕', '𐑓𐑚𐑜': '𐑕𐑒', '𐑓𐑚𐑜𐑑': '𐑕𐑒𐑑', '𐑓𐑚𐑜𐑑𐑕': '𐑕𐑒𐑑𐑕', '𐑓𐑚𐑜𐑕': '𐑕𐑒𐑕', '𐑓𐑚𐑜𐑕𐑛': '𐑕𐑒𐑕𐑑', '𐑚𐑑𐑛': '𐑕𐑔', '𐑚𐑑𐑛𐑟': '𐑕𐑔𐑕',
         '𐑟': '𐑟', '𐑚𐑕': '𐑟', '𐑚𐑤𐑜': '𐑟𐑛', '𐑚𐑑𐑕𐑛': '𐑟𐑔', '𐑚𐑑𐑕𐑛𐑟': '𐑟𐑔𐑕',
         '𐑐𐑜': '𐑖', '𐑐𐑜𐑑': '𐑖𐑑', '𐑐𐑜𐑑𐑕': '𐑖𐑑𐑕', '𐑐𐑜𐑑𐑛': '𐑖𐑔', '𐑐𐑜𐑑𐑛𐑟': '𐑖𐑔𐑕',
-        '𐑐𐑜𐑟': '𐑠', '𐑐𐑚𐑜𐑛': '𐑠𐑛', '𐑐𐑜𐑛': '𐑠𐑛', '𐑐𐑚𐑜𐑛𐑟': '𐑠𐑛𐑟', '𐑐𐑜𐑛𐑟': '𐑠𐑛𐑟',
+        '𐑐𐑜𐑕': '𐑠', '𐑐𐑚𐑕𐑛': '𐑠𐑛', '𐑐𐑜𐑛': '𐑠𐑛', '𐑐𐑚𐑜𐑛': '𐑠𐑛', '𐑐𐑚𐑜𐑛𐑟': '𐑠𐑛𐑟', '𐑐𐑜𐑛𐑟': '𐑠𐑛𐑟',
         '𐑐𐑤𐑜': '𐑗', '𐑐𐑤𐑜𐑑': '𐑗𐑑', '𐑐𐑤𐑜𐑑𐑕': '𐑗𐑑𐑕', '𐑐𐑤𐑜𐑑𐑛': '𐑗𐑔', '𐑐𐑤𐑜𐑑𐑛𐑟': '𐑗𐑔𐑕',
-        '𐑐𐑚𐑤𐑜': '𐑡', '𐑐𐑤𐑜𐑟': '𐑡', '𐑐𐑚𐑤𐑜𐑛': '𐑡𐑛', '𐑐𐑤𐑜𐑛': '𐑡𐑛', '𐑐𐑚𐑤𐑜𐑛𐑟': '𐑡𐑛𐑟', '𐑐𐑤𐑜𐑛𐑟': '𐑡𐑛𐑟', '𐑐𐑚𐑤𐑜𐑑𐑛': '𐑡𐑔', '𐑐𐑚𐑤𐑜𐑑𐑛𐑟': '𐑡𐑔𐑕',
+        '𐑐𐑚𐑤𐑜': '𐑡', '𐑐𐑤𐑜𐑕': '𐑡', '𐑐𐑚𐑤𐑜𐑛': '𐑡𐑛', '𐑐𐑤𐑜𐑛': '𐑡𐑛', '𐑐𐑚𐑤𐑜𐑛𐑟': '𐑡𐑛𐑟', '𐑐𐑤𐑜𐑛𐑟': '𐑡𐑛𐑟', '𐑐𐑚𐑤𐑜𐑑𐑛': '𐑡𐑔', '𐑐𐑚𐑤𐑜𐑑𐑛𐑟': '𐑡𐑔𐑕',
         '𐑐𐑚': '𐑙', '𐑐𐑚𐑛': '𐑙𐑛', '𐑐𐑚𐑛𐑟': '𐑙𐑛𐑟', '𐑐𐑚𐑜': '𐑙𐑒', '𐑐𐑚𐑜𐑑': '𐑙𐑒𐑑', '𐑐𐑚𐑜𐑑𐑕': '𐑙𐑒𐑑𐑕', '𐑐𐑚𐑜𐑑𐑛': '𐑙𐑒𐑔', '𐑐𐑚𐑜𐑑𐑛𐑟': '𐑙𐑒𐑔𐑕', '𐑐𐑚𐑜𐑕': '𐑙𐑒𐑕', '𐑐𐑚𐑜𐑕𐑛': '𐑙𐑒𐑕𐑑', '𐑐𐑚𐑜𐑕𐑛𐑟': '𐑙𐑒𐑕𐑑𐑕', '𐑓𐑜': '𐑙𐑜', '𐑓𐑜𐑛': '𐑙𐑜𐑛', '𐑓𐑜𐑛𐑟': '𐑙𐑜𐑛𐑟', '𐑓𐑜𐑟': '𐑙𐑜𐑟', '𐑐𐑚𐑑𐑛': '𐑙𐑔', '𐑐𐑚𐑑𐑛𐑟': '𐑙𐑔𐑕', '𐑐𐑚𐑕': '𐑙𐑕', '𐑐𐑚𐑕𐑛': '𐑙𐑕𐑑', '𐑐𐑚𐑕𐑛𐑟': '𐑙𐑕𐑑𐑕', '𐑐𐑚𐑟': '𐑙𐑟',
         '𐑤': '𐑤', '𐑓𐑮𐑐': '𐑤𐑐', '𐑓𐑮𐑐𐑑': '𐑤𐑐𐑑', '𐑓𐑮𐑐𐑑𐑕': '𐑤𐑐𐑑𐑕', '𐑓𐑮𐑐𐑕': '𐑤𐑐𐑕', '𐑓𐑮𐑐𐑕𐑛': '𐑤𐑐𐑕𐑑', '𐑓𐑮𐑐𐑚': '𐑤𐑚', '𐑓𐑮𐑐𐑚𐑛': '𐑤𐑚𐑛', '𐑓𐑮𐑐𐑚𐑟': '𐑤𐑚𐑟',
         '𐑤𐑑': '𐑤𐑑', '𐑤𐑑𐑕': '𐑤𐑑𐑕', '𐑤𐑑𐑕𐑛': '𐑤𐑑𐑕𐑑', '𐑤𐑛': '𐑤𐑛', '𐑓𐑮𐑤𐑜': '𐑤𐑛', '𐑤𐑛𐑟': '𐑤𐑛𐑟', '𐑓𐑮𐑤𐑜𐑟': '𐑤𐑛𐑟',
@@ -46,7 +46,7 @@ strokesDict = {
         '𐑓𐑮𐑐𐑤': '𐑤𐑓', '𐑓𐑮𐑐𐑤𐑑': '𐑤𐑓𐑑', '𐑓𐑮𐑐𐑤𐑑𐑕': '𐑤𐑓𐑑𐑕', '𐑓𐑮𐑐𐑤𐑑𐑛': '𐑤𐑓𐑔', '𐑓𐑮𐑐𐑤𐑑𐑛𐑟': '𐑤𐑓𐑔𐑕', '𐑓𐑮𐑐𐑤𐑕': '𐑤𐑓𐑕', '𐑓𐑮𐑐𐑤𐑕𐑛': '𐑤𐑓𐑕𐑑', '𐑓𐑮𐑐𐑚𐑤': '𐑤𐑝', '𐑓𐑮𐑐𐑚𐑤𐑛': '𐑤𐑝𐑛', '𐑓𐑮𐑐𐑚𐑤𐑟': '𐑤𐑝𐑟',
         '𐑓𐑮𐑤': '𐑤𐑔', '𐑓𐑮𐑤𐑑': '𐑤𐑔𐑑', '𐑓𐑮𐑤𐑑𐑕': '𐑤𐑔𐑑𐑕', '𐑓𐑮𐑤𐑕': '𐑤𐑔𐑕', '𐑓𐑮𐑤𐑕𐑛': '𐑤𐑔𐑕𐑑',
         '𐑤𐑕': '𐑤𐑕', '𐑤𐑕𐑛': '𐑤𐑕𐑑', '𐑤𐑟': '𐑤𐑟', '𐑓𐑮𐑚𐑕': '𐑤𐑟', '𐑓𐑮𐑚𐑤𐑜': '𐑤𐑟𐑛', '𐑓𐑮𐑚𐑕𐑛': '𐑤𐑟𐑛',
-        '𐑓𐑮𐑐𐑜': '𐑤𐑖', '𐑓𐑮𐑐𐑜𐑑': '𐑤𐑖𐑑', '𐑓𐑮𐑐𐑚𐑜': '𐑤𐑠', '𐑓𐑮𐑐𐑚𐑜𐑛': '𐑤𐑠𐑛',
+        '𐑓𐑮𐑐𐑜': '𐑤𐑖', '𐑓𐑮𐑐𐑜𐑑': '𐑤𐑖𐑑', '𐑓𐑮𐑐𐑚𐑜': '𐑤𐑠', '𐑓𐑮𐑐𐑜𐑕': '𐑤𐑠', '𐑓𐑮𐑐𐑚𐑜𐑛': '𐑤𐑠𐑛',
         '𐑓𐑮𐑐𐑤𐑜': '𐑤𐑗', '𐑓𐑮𐑐𐑤𐑜𐑑': '𐑤𐑗𐑑', '𐑓𐑮𐑐𐑚𐑤𐑜': '𐑤𐑡', '𐑓𐑮𐑐𐑚𐑤𐑜𐑛': '𐑤𐑡𐑛',
         '𐑓𐑚𐑤': '𐑤𐑥', '𐑓𐑚𐑤𐑛': '𐑤𐑥𐑛', '𐑓𐑚𐑤𐑟': '𐑤𐑥𐑟', '𐑓𐑤': '𐑤𐑯', '𐑓𐑤𐑛': '𐑤𐑯𐑛', '𐑓𐑤𐑟': '𐑤𐑯𐑟',
         '𐑓𐑚': '𐑥', '𐑓𐑐𐑚': '𐑥𐑐', '𐑓𐑐𐑚𐑑': '𐑥𐑐𐑑', '𐑓𐑐𐑚𐑑𐑕': '𐑥𐑐𐑑𐑕', '𐑓𐑐𐑚𐑕': '𐑥𐑐𐑕', '𐑓𐑐𐑚𐑕𐑛': '𐑥𐑐𐑕𐑑', '𐑓𐑐𐑚𐑤': '𐑥𐑓', '𐑓𐑐𐑚𐑤𐑕': '𐑥𐑓𐑕', '𐑓𐑐𐑚𐑤𐑕𐑛': '𐑥𐑓𐑕𐑑', '𐑓𐑐𐑚𐑤𐑑': '𐑥𐑓𐑑', '𐑓𐑐𐑚𐑤𐑑𐑕': '𐑥𐑓𐑑𐑕', '𐑓𐑚𐑑': '𐑥𐑑', '𐑓𐑚𐑑𐑕': '𐑥𐑑𐑕', '𐑓𐑚𐑛': '𐑥𐑛', '𐑓𐑚𐑛𐑟': '𐑥𐑛𐑟', '𐑓𐑚𐑑𐑛': '𐑥𐑔', '𐑓𐑚𐑑𐑛𐑟': '𐑥𐑔𐑕', '𐑓𐑚𐑟': '𐑥𐑟',
@@ -59,7 +59,7 @@ strokesDict = {
         '𐑓𐑮': '𐑓', '𐑓𐑮𐑑': '𐑓𐑑', '𐑓𐑮𐑑𐑕': '𐑓𐑑𐑕', '𐑓𐑮𐑕': '𐑓𐑕', '𐑓𐑮𐑕𐑛': '𐑓𐑕𐑑', '𐑮𐑐𐑚𐑤': '𐑝', '𐑮𐑐𐑚𐑤𐑛': '𐑝𐑛', '𐑓𐑮𐑛': '𐑝𐑛', '𐑮𐑐𐑚𐑤𐑟': '𐑝𐑟', '𐑓𐑮𐑟': '𐑝𐑟',
         '𐑮𐑑𐑛': '𐑔', '𐑓𐑮𐑤𐑜𐑑': '𐑔𐑑', '𐑮𐑑𐑛𐑟': '𐑔𐑕', '𐑓𐑮𐑤𐑜𐑕': '𐑔𐑕', '𐑓𐑮𐑤𐑜': '𐑞', '𐑓𐑮𐑤𐑜𐑛': '𐑞𐑛', '𐑓𐑮𐑤𐑜𐑟': '𐑞𐑟',
         '𐑮𐑕': '𐑕', '𐑮𐑕𐑛': '𐑕𐑑', '𐑮𐑚𐑑': '𐑕𐑑', '𐑮𐑕𐑛𐑟': '𐑕𐑑𐑕', '𐑮𐑚𐑑𐑕': '𐑕𐑑𐑕', '𐑮𐑟': '𐑟', '𐑮𐑚𐑕': '𐑟', '𐑮𐑚𐑤𐑜': '𐑟𐑛', '𐑮𐑚𐑕𐑛': '𐑟𐑛',
-        '𐑮𐑐𐑜': '𐑖', '𐑮𐑚𐑜𐑑': '𐑖𐑑', '𐑮𐑐𐑚𐑜': '𐑠', '𐑮𐑐𐑚𐑜𐑛': '𐑠𐑛', '𐑮𐑐𐑜𐑛': '𐑠𐑛',
+        '𐑮𐑐𐑜': '𐑖', '𐑮𐑚𐑜𐑑': '𐑖𐑑', '𐑮𐑐𐑚𐑜': '𐑠', '𐑮𐑐𐑜𐑕': '𐑠', '𐑮𐑐𐑚𐑜𐑛': '𐑠𐑛', '𐑮𐑐𐑜𐑛': '𐑠𐑛',
         '𐑮𐑐𐑤𐑜': '𐑗', '𐑮𐑐𐑤𐑜𐑑': '𐑗𐑑', '𐑮𐑐𐑚𐑤𐑜': '𐑡', '𐑮𐑐𐑚𐑤𐑜𐑛': '𐑡𐑛',
         '𐑮𐑤': '𐑤', '𐑮𐑤𐑛': '𐑤𐑛', '𐑮𐑤𐑛𐑟': '𐑤𐑛𐑟', '𐑮𐑤𐑟': '𐑤𐑟',
         '𐑓𐑮𐑚': '𐑥', '𐑓𐑮𐑚𐑛': '𐑥𐑛', '𐑓𐑮𐑚𐑟': '𐑥𐑟', '𐑮𐑐𐑚': '𐑯', '𐑮𐑐𐑚𐑑': '𐑯𐑑', '𐑮𐑐𐑚𐑑𐑕': '𐑯𐑑𐑕', '𐑮𐑐𐑚𐑛': '𐑯𐑛', '𐑮𐑐𐑚𐑕': '𐑯𐑕', '𐑮𐑐𐑚𐑟': '𐑯𐑟',
@@ -67,7 +67,6 @@ strokesDict = {
 }
 
 # === dictionary functions ===
-
 def comparejsons() -> None:
     import plover
 
@@ -152,6 +151,33 @@ def schwu(first: str, last: str) -> str:
         return first[:-1] + '𐑫'
     else: return first
 
+### returns $s, changing a final 𐑛 or 𐑟 with devoicing or schwa
+def devoice(s: str, a: int) -> str:
+    import re
+
+    # a = 0 means no apostrophe,
+    # = 1 means with apostrophe,
+    # and = 2 means with apostrophe and schwa
+    lb = max(0, a-1) * '(?:'
+    rb = max(0, a-1) * "'?)"
+
+    if s[-1] not in '𐑑𐑕𐑛𐑟' or not s:
+        return s
+    # voices 𐑕 and 𐑑 for the sake of testing
+    if ord(s[-1]) < 66650:
+        s = s[:-1] + chr(ord(s[-1]) + 10)
+
+    # $vl marks exceptions to devoicing
+    vl = {'𐑛': '𐑑', '𐑟': '𐑕-𐑗'}[s[-1]]
+    # substitute 𐑛 or 𐑟 for 𐑑 or 𐑕 if previous letter is devoiced
+    output = re.sub(f"(.+[𐑐-𐑗𐑣](?<![{vl}])'?){s[-1]}", f'\\1{vl[0]}', s)
+    # remove apostrophe
+    if not a and output[-2] == "'":
+        output = output[:-2] + output[-1]
+    # insert schwa where necessary
+    output = re.sub(f'(.+?)({lb}([𐑑𐑛])|[𐑕-𐑗𐑟-𐑡]){rb}((?(3)𐑛|𐑟))$', r'\1\2𐑩\4', output)
+    return output
+
 ### searches for $stroke in strokesDict, returning None if not found
 # latinOut = True will return latin spelling if available
 def briefsDict_search(stroke: str, latinOut: bool = False, standard: bool = False) -> Optional[str]:
@@ -183,6 +209,9 @@ def parse_joiners(shav: Union[str, Tuple[str, ...]], groups: Tuple[str, ...] = (
             part = dissect[int(part)]
             if part is not None:
                 sections[-1] = (sections[-1] or '') + part
+
+    if len(sections) == 1:
+        sections = ''.join(sections)
     return sections
 
 fingerspelling = {
@@ -212,7 +241,7 @@ fingerspelling = {
             '10',   '10𐑟',   '10𐑔',  '10𐑔𐑕',       '𐑑𐑧𐑯',      '𐑑𐑧𐑯𐑟',      '𐑑𐑧𐑯𐑔',     '𐑑𐑧𐑯𐑔𐑕'],
         [   '11',   '11s',  '11th', '11ths',    'eleven',   'elevens',  'eleventh', 'elevenths',
             '11',   '11𐑟',   '11𐑔',  '11𐑔𐑕',    '𐑦𐑤𐑧𐑝𐑩𐑯',   '𐑦𐑤𐑧𐑝𐑩𐑯𐑟',   '𐑦𐑤𐑧𐑝𐑩𐑯𐑔',  '𐑦𐑤𐑧𐑝𐑩𐑯𐑔𐑕'],
-        [   '12',   '12s',  '12th', '12ths',    'twelve',   'twelves',   'twelfth',  'twelfths'
+        [   '12',   '12s',  '12th', '12ths',    'twelve',   'twelves',   'twelfth',  'twelfths',
             '12',   '12𐑟',   '12𐑔',  '12𐑔𐑕',     '𐑑𐑢𐑧𐑤𐑝',    '𐑑𐑢𐑧𐑤𐑝𐑟',    '𐑑𐑢𐑧𐑤𐑓𐑔',   '𐑑𐑢𐑧𐑤𐑓𐑔𐑕']],
     '𐑐':  'P', '𐑚':  'B', '𐑑':  'T', '𐑛':  'D', '𐑒':  'K',  '𐑜': 'G',
     '𐑓':  'F', '𐑝':  'V', '𐑔': 'TH', '𐑞': 'DH', '𐑕':  'S', '𐑟':  'Z',
@@ -269,7 +298,7 @@ def deschiffresetdeslettres(stroke: Tuple[str], latinOut: bool = False) -> Optio
                 # when not shavian, vowel must be present in fingerspelling dictionary
                 # if rhotic, an r will be placed after the vowel
                 letter = fingerspelling[vowel.replace('*', '')] + bool(r) * 'r'
-                if not re.fullmatch(r'(.\*|\*.)', vowel):
+                if not re.fullmatch(r'(.\*|\*.*)', vowel):
                     # vowel should be lowercase if no *
                     letter = f'{{>}}{letter.lower()}'
 
@@ -299,7 +328,7 @@ def stroke_to_shav(stroke: str) -> str:
 
     # === segmenting strokes for searching and parsing ===
     # to make 𐑒𐑢𐑮 pass the regex
-    if stroke == '𐑒𐑢𐑮': stroke += '-'
+    if stroke.replace('#', '') == '𐑒𐑢𐑮': stroke += '-'
 
     # the hash symbol is used to mark where two words join
     if stroke == '#': return '{^}'
@@ -317,13 +346,13 @@ def stroke_to_shav(stroke: str) -> str:
         joinsNext = True
         vowel = vowel.replace('𐑨','')
 
-    # -TZ - alternative joiner (like #)
-    if final.replace('𐑮','') == '𐑑𐑟':
-        joinsNext = True
-        final = final.replace('𐑑𐑟','')
+    # # -TZ - alternative joiner (like #)
+    # if final.replace('𐑮','') == '𐑑𐑟':
+    #     joinsNext = True
+    #     final = final.replace('𐑑𐑟','')
 
     # determines rhoticity
-    if final in list(strokesDict['rhotic'].keys()):
+    if final.replace('𐑟', '') in list(strokesDict['rhotic'].keys()):
         rhoticity = 'rhotic'
     else:
         rhoticity = 'nonrhotic'
@@ -338,9 +367,25 @@ def stroke_to_shav(stroke: str) -> str:
         elif vowel == '-':
             vowel = ''
 
+    # rhotic compounds with long vowels
+    compound = ''
+    if rhoticity == 'rhotic' and vowel not in strokesDict['rhotic']:
+        compound = strokesDict['nonrhotic'][vowel]
+        vowel = '*'
+
+    # schwaed plurals
+    plural = ''
+    if '𐑟' in final and final.replace('𐑟', '') in strokesDict[rhoticity]:
+        pluralless = strokesDict[rhoticity][final.replace('𐑟', '')]
+        if pluralless and pluralless[-1:] in '𐑕𐑟𐑖𐑠𐑗𐑡':
+            final = final.replace('𐑟', '')
+            plural = '𐑩𐑟'
+
 
     # === conversion from steno to raw shavian (illegal strokes will raise KeyError) ===
-    shav = strokesDict['initials'][initial] + strokesDict[rhoticity][vowel] + strokesDict[rhoticity][final]
+    shav = strokesDict['initials'][initial] + compound + strokesDict[rhoticity][vowel] + strokesDict[rhoticity][final]
+    for i, j in {'𐑘𐑵': '𐑿', '𐑘𐑿': '𐑿', '𐑾𐑼': '𐑰𐑼'}.items():
+        shav = shav.replace(i, j)
 
 
     # === determination of word boundaries ===
@@ -352,20 +397,29 @@ def stroke_to_shav(stroke: str) -> str:
             or (len(vowel) > 3)
             or (vowel == '*' and joinsNext)
         )
-    ) or initial == '𐑦':
+    ) and (not compound) or initial == '𐑦':
         if vowel == '*' and final == '':
             raise KeyError('* cannot end a word (try *U)')
         shav = '{^}' + shav
 
+    # will except words that shouldn't be changed, like 𐑲𐑼𐑯 (𐑝· 𐑲𐑼𐑦𐑙) 𐑯 𐑚𐑶𐑙
+    if shav not in latin:
+        # 𐑯 to 𐑙 after rhotic compound
+        shav = re.sub('(𐑽|[𐑬-𐑲𐑴-𐑷𐑿]𐑼)(𐑯)', r'\1𐑙', shav)
+
+        # 𐑦 before 𐑙 after long vowel
+        shav = re.sub('([𐑬-𐑲𐑴-𐑷𐑽𐑿]𐑼?)(𐑙)', r'\1𐑦\2', shav)
+
     if joinsNext:
         shav += '{^}'
 
-    return shav
+    return shav + plural
 
 
 ### ('#𐑑𐑐*', '𐑑𐑐𐑣𐑧𐑑', '𐑒𐑢𐑮-𐑚𐑜𐑕') into '𐑓𐑩𐑯𐑧𐑑𐑦𐑒𐑕'
-def steno_to_shav(steno: Tuple[str, ...], standard: bool = False) -> Tuple[Optional[str], int]:
+def steno_to_shav(steno: Tuple[str, ...], standard: bool = False) -> Tuple[Optional[str], int, bool]:
     output = None
+    past = False
 
     # special exception for the 𐑳 -> 𐑩 brief
     if steno[-1] == '𐑳':
@@ -383,6 +437,8 @@ def steno_to_shav(steno: Tuple[str, ...], standard: bool = False) -> Tuple[Optio
         if output == '{^}{^}':
             raise KeyError(f'outline {steno} starts with no phonetic information')
 
+        dz = False
+
         syllable = briefsDict_search(stroke)
         previous = parse_joiners(output or '{^}', ('0123','4'))
 
@@ -397,6 +453,10 @@ def steno_to_shav(steno: Tuple[str, ...], standard: bool = False) -> Tuple[Optio
         # else, if joiners in output (stroke is a prefix stroke)
         else:
             syllable = parse_joiners(syllable, ('02', '1', '34'))
+            if any(x == syllable[1] for x in ['𐑛', '𐑟', "'𐑟"]):
+                dz = True
+                if syllable[1] == '𐑛':
+                    past = True
 
         # == update previous and commit to output if strokes connect ==
         previous[0] = schwu(previous[0], syllable[1] or '')
@@ -404,6 +464,8 @@ def steno_to_shav(steno: Tuple[str, ...], standard: bool = False) -> Tuple[Optio
         if previous[1] or syllable[0]:
             # adds syllable to output without intermediary joiners; None -> ''
             output = ''.join([(x or '') for x in previous[:bool(output)] + syllable[bool(output):]])
+            if dz:
+                output = devoice(output, 1)
         else:
             raise KeyError('Word boundary within outline')
 
@@ -415,12 +477,32 @@ def steno_to_shav(steno: Tuple[str, ...], standard: bool = False) -> Tuple[Optio
                 variant -= 1
         output = ''.join([(x or '') for x in output])
 
-    return output, variant
+    return output, variant, past
 
-def shav_to_latin(shav: str, variant: int = 0) -> str:
+def shav_to_latin(shav: str, variant: int = 0, past: bool = False) -> str:
+    import re
     output = parse_joiners(shav, ('012', '3', '4'))
-    output[1] = latin[output[1]]
-    if variant >= len(output[1]):
+    shav = output[1]
+    output[1] = []
+
+    if shav in latin:
+        output[1] += latin[shav]
+
+    suffixsplit = re.fullmatch('(.*?[^𐑩])(𐑩?[𐑛𐑟]|[𐑑𐑕]|𐑼𐑟?|𐑦𐑙𐑟?)$', shav)
+    if suffixsplit is not None:
+        (shav, suffix) = suffixsplit.groups()
+        for k, v in {'𐑩?[𐑑𐑛]': 'ed', '𐑩': 'e', '𐑼': 'er', '𐑦𐑙': 'ing', '[𐑕𐑟]': 's'}.items():
+            suffix = re.sub(k, v, suffix)
+        if shav in latin:
+            for lat in latin[shav]:
+                if any(suffix.startswith(v) for v in 'aeiou'):
+                    lat = re.sub('(.+)e$', r'\1', lat)
+                if not any(lat + suffix == word for word in output[1]):
+                    output[1].append(f"{lat}{suffix}")
+
+    output[1] = sorted(output[1], key = lambda k: k.endswith('ed'), reverse = past)
+
+    if variant >= len(output[1]) or len(output[1]) == 0:
         raise KeyError('No such variant')
     output[1] = output[1][variant]
     return ''.join([(x or '') for x in output])

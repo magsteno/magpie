@@ -1,6 +1,6 @@
 #test shavian dictionary
 
-from testlib import deschiffresetdeslettres, briefsDict_search, steno_to_shav, reloaddicts
+from testlib import deschiffresetdeslettres, briefsDict_search, steno_to_shav, reloaddicts, devoice
 
 LONGEST_KEY = 6
 
@@ -38,10 +38,13 @@ def lookup(chords):
     if output is None:
         output = deschiffresetdeslettres(outline)
     if output is None:
-        (output, variant) = steno_to_shav(outline, standard = True)
+        (output, variant, past) = steno_to_shav(outline, standard = True)
         if output is None:
             raise KeyError('Empty stroke')
         if variant:
             raise KeyError('no known variant')
+
+    if any(x == output[-2:] for x in ["'𐑟", "'𐑕"]):
+        output = devoice(output, 0)
 
     return output

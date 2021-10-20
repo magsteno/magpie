@@ -33,14 +33,14 @@ def lookup(chords):
     output = briefsDict_search(outline, latinOut = True)
 
     outline = tuple(outline.split('/'))
-    
+
     if output is None:
         output = deschiffresetdeslettres(outline, latinOut = True)
     if output is None:
-        (output, variant) = steno_to_shav(outline)
+        (output, variant, past) = steno_to_shav(outline)
         if output is None:
             raise KeyError('Empty stroke')
-        output = shav_to_latin(output, variant)
+        output = shav_to_latin(output, variant, past)
 
         if output.startswith('\''): output = output.replace('\'', '{~|\'^}', 1)
 
