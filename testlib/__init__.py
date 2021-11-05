@@ -194,14 +194,17 @@ def suffixsplit(shav):
     output = split and list(split.groups())
     return output
 
-def shun(tion: str, variant: int) -> Tuple[Union[str, None], int]:
+def shun(shav: str, variant: int) -> Tuple[Union[str, None], int]:
     import re
 
-    output = tion
+    output = None
+    tion = shav
 
     split = re.fullmatch('(.+)([𐑤𐑯][𐑖𐑠𐑗𐑡](?:𐑩𐑟|[𐑑𐑛])?)$', tion)
     if not split:
-        return output, variant
+        return shav, variant
+    elif shav in latin:
+        output = shav
 
     split = split.groups()
 
@@ -234,6 +237,9 @@ def shun(tion: str, variant: int) -> Tuple[Union[str, None], int]:
                 else:
                     output = word + pre + cian + broken[2]
                     break
+
+    if not (output or variant) and shav not in latin:
+        output = shav
 
     return output, variant
 
@@ -485,7 +491,9 @@ def steno_to_shav(steno: Tuple[str, ...], standard: bool = False) -> Tuple[Optio
     else:
         variant = 0
 
-    for stroke in steno[:-variant or None]:
+    steno = steno[:-variant or None]
+
+    for stroke in steno:
         if output == '{^}{^}':
             raise KeyError(f'outline {steno} starts with no phonetic information')
 
