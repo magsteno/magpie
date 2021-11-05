@@ -44,7 +44,7 @@ def lookup(chords):
         if variant:
             raise KeyError('no known variant')
 
-    if any(x == output[-2:] for x in ["'𐑟", "'𐑕"]):
+    if any(x == output[-2:] for x in ["'𐑛", "'𐑑", "'𐑟", "'𐑕"]):
         output = devoice(output, 0)
 
     return output
