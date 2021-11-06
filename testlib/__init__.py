@@ -194,7 +194,7 @@ def suffixsplit(shav):
     output = split and list(split.groups())
     return output
 
-def shun(shav: str, variant: int) -> Tuple[Union[str, None], int]:
+def shun(shav: str, variant: int = 0) -> Tuple[Union[str, None], int]:
     import re
 
     output = None
@@ -550,6 +550,7 @@ def steno_to_shav(steno: Tuple[str, ...], standard: bool = False) -> Tuple[Optio
                     variant -= 1
             elif not (len(steno) == 1
                         or any(standard in latin for standard in (split and split[0], output[1]))
+                        or shun(output[1])[0] != output[1]
                         or schwued or dz
                     ):
                 raise KeyError('non-standard')
