@@ -198,9 +198,8 @@ def shun(shav: str, variant: int) -> Tuple[Union[str, None], int]:
     import re
 
     output = None
-    tion = shav
 
-    split = re.fullmatch('(.+)([𐑤𐑯][𐑖𐑠𐑗𐑡](?:𐑩𐑟|[𐑑𐑛])?)$', tion)
+    split = re.fullmatch('(.+)([𐑤𐑯][𐑖𐑠𐑗𐑡](?:𐑩𐑟|[𐑑𐑛])?)$', shav)
     if not split:
         return shav, variant
     elif shav in latin:
@@ -468,10 +467,12 @@ def stroke_to_shav(stroke: str) -> str:
         # 𐑦 before 𐑙 after long vowel
         shav = re.sub('([𐑬-𐑲𐑴-𐑷𐑽𐑿]𐑼?)(𐑙)', r'\1𐑦\2', shav)
 
+    shav += plural
+
     if joinsNext:
         shav += '{^}'
 
-    return shav + plural
+    return shav
 
 
 ### ('#𐑑𐑐*', '𐑑𐑐𐑣𐑧𐑑', '𐑒𐑢𐑮-𐑚𐑜𐑕') into '𐑓𐑩𐑯𐑧𐑑𐑦𐑒𐑕'
@@ -524,12 +525,14 @@ def steno_to_shav(steno: Tuple[str, ...], standard: bool = False) -> Tuple[Optio
         # if joiner at end of $previous or start of $syllable
         if previous[1] or syllable[0]:
             # adds syllable to output without intermediary joiners; None -> ''
-            output = ''.join([(x or '') for x in previous[:bool(output)] + syllable[bool(output):]])
-            if dz:
-                output = devoice(output, 1)
+            output = ''.join([(x or '') for x in previous[:bool(output)] + syllable[bool(output):2]])
             (output, variant) = shun(output, variant)
             if output is None:
                 raise KeyError('No such variant')
+            else:
+                output += syllable[2] or ''
+            if dz:
+                output = devoice(output, 1)
         else:
             raise KeyError('Word boundary within outline')
 
